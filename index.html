@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>For Yoba</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #1b2735, #090a0f);
+            color: white;
+            min-height: 100vh;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* STAR BACKGROUND */
+        .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: transparent;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            opacity: 0.8;
+            animation: moveStar linear infinite;
+        }
+
+        @keyframes moveStar {
+            from {
+                transform: translateY(0);
+            }
+
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        /* MAIN CARD */
+        .card {
+            position: relative;
+            z-index: 1;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(12px);
+            padding: 40px;
+            border-radius: 20px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        h1 {
+            font-size: 2.3rem;
+            margin-bottom: 15px;
+        }
+
+        p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+
+        .button {
+            margin-top: 25px;
+            padding: 12px 28px;
+            border: none;
+            border-radius: 30px;
+            background: #ff6f91;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.06);
+            background: #ff4f78;
+        }
+
+        .hidden {
+            display: none;
+            margin-top: 20px;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- STARS -->
+    <div class="stars" id="stars"></div>
+
+    <!-- CONTENT -->
+    <div class="card">
+        <h1>Hey Yoba 🌙</h1>
+
+        <p>
+            I just wanted to say that I miss you and hope ur oky doky.
+        </p>
+
+        <button class="button" onclick="reveal()">
+            Click me
+        </button>
+
+        <div id="message" class="hidden">
+            <p>
+                I miss you.
+                In ways that are quiet,
+                and ways that catch me off guard.
+                reading dis is cringe ,in a 'im very shy and embarrassed'way, but i just wanted you to know that
+                ngiyakuthandaaaaa.
+            </p>
+        </div>
+    </div>
+
+    <!-- MUSIC -->
+    <audio id="music" src="music.mp3"></audio>
+
+    <script>
+        /* MESSAGE + MUSIC */
+        function reveal() {
+            document.getElementById("message").classList.remove("hidden");
+            document.getElementById("music").play();
+        }
+
+        /* STAR GENERATOR */
+        const starContainer = document.getElementById("stars");
+
+        for (let i = 0; i < 120; i++) {
+            const star = document.createElement("div");
+            star.classList.add("star");
+            star.style.left = Math.random() * 100 + "vw";
+            star.style.top = Math.random() * 100 + "vh";
+            star.style.animationDuration = (3 + Math.random() * 7) + "s";
+            starContainer.appendChild(star);
+        }
+    </script>
+
+</body>
+
+</html>
